@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int compress(vector<char>& chars) {
+        int idx=0,ansidx=0;
+        while(idx<chars.size()){
+            char curr=chars[idx];
+            int count=0;
+            while(idx<chars.size()&&curr==chars[idx]){
+                idx++;
+                count++;
+            }
+            chars[ansidx++]=curr;
+            if(count>1){
+                string tmp=to_string(count);
+                for(char x:tmp) chars[ansidx++]=x;
+            }
+        }
+        return ansidx;
+    }
+};
